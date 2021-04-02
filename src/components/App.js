@@ -13,7 +13,7 @@ class App extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Dapp University
+            Hera Token
           </a>
         </nav>
         <div className="container-fluid mt-5">
@@ -27,7 +27,7 @@ class App extends Component {
                 >
                   <img src={logo} className="App-logo" alt="logo" />
                 </a>
-                <h1>Dapp University Starter Kit</h1>
+                <h1>HERA Token</h1>
                 <p>
                   Edit <code>src/components/App.js</code> and save to reload.
                 </p>
