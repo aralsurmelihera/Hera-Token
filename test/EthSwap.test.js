@@ -11,12 +11,12 @@ function tokens(n) {
     return web3.utils.toWei(n, 'ether')
 }
 
-contract ('EthSwap', (accounts) => {
+contract ('EthSwap', ([deployer, investor]) => {
     let token, ethSwap
 
     before(async () => {
          token = await Token.new()
-         ethSwap = await EthSwap.new()
+         ethSwap = await EthSwap.new(token.address)
         await token.transfer(ethSwap.address, tokens('1000000'))
     })
 
@@ -38,4 +38,13 @@ contract ('EthSwap', (accounts) => {
             assert.equal(balance.toString(), tokens('1000000'))
         })
     })
+
+
+    describe('buyTokens()', async () => {
+        it('Allows user to instantly purchase tokens from ethSwap for a fixed price', async () => {
+            await ethSwap.buyTokens({ from: investor, value: web3.utils.toWei('1', 'ether')})
+        })
+    })
+
+
 })
